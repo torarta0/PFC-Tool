@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Bright Theme (Default) */
+  --color-background: #f8fafc;
+  --color-surface: #f8fafc;
+  --color-surface-low: #ffffff;
+  --color-surface-variant: #f1f5f9;
+  --color-surface-bright: #e2e8f0;
+  
+  --color-primary: #6366f1;
+  --color-primary-container: #e0e7ff;
+  --color-on-primary: #ffffff;
+  --color-primary-fixed-dim: #818cf8;
+  
+  --color-secondary: #0ea5e9;
+  --color-reward: #f59e0b;
+  --color-on-surface: #0f172a;
+  --color-on-surface-variant: #475569;
+  --color-outline: #cbd5e1;
+  --color-outline-variant: #e2e8f0;
+  
+  --color-tertiary: #10b981;
+  --color-on-tertiary-container: #064e3b;
+  
+  --color-error: #ef4444;
+  --color-error-dim: #f87171;
+
+  /* Font Sizes */
+  --fs-base: 16px;
+}
+
+[data-theme='moss'] {
+  --color-background: #f1f3f0;
+  --color-surface: #f1f3f0;
+  --color-surface-low: #ffffff;
+  --color-surface-variant: #e4e9e2;
+  --color-surface-bright: #d5ddd1;
+  
+  --color-primary: #4a6741;
+  --color-primary-container: #dce6d8;
+  --color-on-primary: #ffffff;
+  --color-primary-fixed-dim: #6b8e5e;
+  
+  --color-secondary: #8a9a5b;
+  --color-reward: #d4a373;
+  --color-on-surface: #2d362a;
+  --color-on-surface-variant: #5a6b56;
+  --color-outline: #b5c0b1;
+  --color-outline-variant: #cbd5c8;
+  
+  --color-tertiary: #a3b18a;
+  --color-on-tertiary-container: #344e41;
+  
+  --color-error: #bc4749;
+  --color-error-dim: #e56b6f;
+}
+
+[data-theme='rose'] {
+  --color-background: #fffafa;
+  --color-surface: #fffafa;
+  --color-surface-low: #ffffff;
+  --color-surface-variant: #fce4ec;
+  --color-surface-bright: #f8bbd0;
+  
+  --color-primary: #d81b60;
+  --color-primary-container: #f8bbd0;
+  --color-on-primary: #ffffff;
+  --color-primary-fixed-dim: #f06292;
+  
+  --color-secondary: #f48fb1;
+  --color-reward: #ffb74d;
+  --color-on-surface: #4a148c;
+  --color-on-surface-variant: #880e4f;
+  --color-outline: #f48fb1;
+  --color-outline-variant: #f8bbd0;
+  
+  --color-tertiary: #ce93d8;
+  --color-on-tertiary-container: #4a148c;
+  
+  --color-error: #e91e63;
+  --color-error-dim: #f06292;
+}
+
+[data-theme='dark'] {
+  --color-background: #090e17;
+  --color-surface: #090e17;
+  --color-surface-low: #0c1320;
+  --color-surface-variant: #152640;
+  --color-surface-bright: #182c4b;
+  
+  --color-primary: #97cfe0;
+  --color-primary-container: #094e5c;
+  --color-on-primary: #004754;
+  --color-primary-fixed-dim: #a5ddee;
+  
+  --color-secondary: #79a6a5;
+  --color-reward: #f2c94c;
+  --color-on-surface: #dbe6ff;
+  --color-on-surface-variant: #9babcc;
+  --color-outline: #667694;
+  --color-outline-variant: #384864;
+  
+  --color-tertiary: #eeffdc;
+  --color-on-tertiary-container: #465d34;
+  
+  --color-error: #ee7d77;
+  --color-error-dim: #bb5551;
+}
+
+[data-font-size='small'] {
+  --fs-base: 14px;
+}
+
+[data-font-size='large'] {
+  --fs-base: 18px;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-headline: "Manrope", sans-serif;
+  --font-label: "Inter", sans-serif;
+  
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-low: var(--color-surface-low);
+  --color-surface-variant: var(--color-surface-variant);
+  --color-surface-bright: var(--color-surface-bright);
+  
+  --color-primary: var(--color-primary);
+  --color-primary-container: var(--color-primary-container);
+  --color-on-primary: var(--color-on-primary);
+  --color-primary-fixed-dim: var(--color-primary-fixed-dim);
+  
+  --color-secondary: var(--color-secondary);
+  --color-reward: var(--color-reward);
+  --color-on-surface: var(--color-on-surface);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-outline: var(--color-outline);
+  --color-outline-variant: var(--color-outline-variant);
+  
+  --color-tertiary: var(--color-tertiary);
+  --color-on-tertiary-container: var(--color-on-tertiary-container);
+  
+  --color-error: var(--color-error);
+  --color-error-dim: var(--color-error-dim);
+
+  --radius-xl: 0.5rem;
+  --radius-2xl: 1rem;
+}
+
+[data-font-family='serif'] {
+  font-family: "Playfair Display", serif;
+  --font-sans: "Playfair Display", serif;
+  --font-headline: "Playfair Display", serif;
+  --font-label: "Playfair Display", serif;
+}
+
+[data-font-family='mono'] {
+  font-family: "JetBrains Mono", monospace;
+  --font-sans: "JetBrains Mono", monospace;
+  --font-headline: "JetBrains Mono", monospace;
+  --font-label: "JetBrains Mono", monospace;
+}
+
+[data-font-family='display'] {
+  font-family: "Space Grotesk", sans-serif;
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+}
+
+@layer base {
+  html {
+    font-size: var(--fs-base);
+    font-family: var(--font-sans);
+  }
+  body {
+    @apply bg-background text-on-surface antialiased;
+    font-family: inherit;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  .nordic-glass {
+    @apply bg-surface-variant/70 backdrop-blur-xl border border-outline-variant/15;
+  }
+  
+  .nordic-btn-primary {
+    @apply bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold rounded-xl transition-transform active:scale-95 shadow-lg shadow-primary/10;
+  }
+
+  .nordic-card {
+    @apply bg-surface-low rounded-2xl border border-outline-variant/5 transition-all;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom scrollbar for Nordic Zen feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-outline-variant/20 rounded-full hover:bg-outline-variant/40 transition-colors;
+}
