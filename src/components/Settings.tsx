@@ -267,7 +267,7 @@ export const Settings: React.FC = () => {
             { id: 'bright', label: '明亮', icon: 'light_mode', color: '#6366f1' },
             { id: 'dark', label: '暗黑', icon: 'dark_mode', color: '#090e17' },
             { id: 'moss', label: '北欧苔', icon: 'forest', color: '#4a6741' },
-            { id: 'rose', label: '落日玫', icon: 'filter_vintage', color: '#d81b60' }
+            { id: 'nebula', label: '暮色星云', icon: 'auto_awesome', color: '#818cf8' }
           ].map(theme => (
             <button
               key={theme.id}
@@ -280,7 +280,7 @@ export const Settings: React.FC = () => {
               >
                 <MaterialIcon name={theme.icon} className="text-white text-sm" />
               </div>
-              <span className={`text-[11px] font-bold ${state.appearance?.theme === theme.id ? 'text-primary' : 'text-on-surface'}`}>{theme.label}</span>
+              <span className={`text-xs font-bold ${state.appearance?.theme === theme.id ? 'text-primary' : 'text-on-surface'}`}>{theme.label}</span>
             </button>
           ))}
         </div>
@@ -307,7 +307,7 @@ export const Settings: React.FC = () => {
               className={`p-5 rounded-[1.5rem] border text-left transition-all ${state.appearance?.fontFamily === font.id ? 'bg-primary/10 border-primary' : 'bg-surface-variant/10 border-outline-variant/5 hover:bg-surface-variant/20'}`}
             >
               <span className={`block text-xl mb-2 ${font.font}`}>PFC指挥官</span>
-              <span className="text-[10px] font-black uppercase tracking-widest opacity-60">{font.label}</span>
+              <span className="text-xs font-black uppercase tracking-widest opacity-60">{font.label}</span>
             </button>
           ))}
         </div>
@@ -337,7 +337,7 @@ export const Settings: React.FC = () => {
             </button>
           ))}
         </div>
-        <p className="text-[10px] text-on-surface-variant text-center opacity-60 font-medium">调整字体大小以获得最佳的移动端阅读体验</p>
+        <p className="text-xs text-on-surface-variant text-center opacity-60 font-medium">调整字体大小以获得最佳的移动端阅读体验</p>
       </div>
     </motion.div>
   );
@@ -486,7 +486,7 @@ export const Settings: React.FC = () => {
                         <div className="p-6 bg-surface-variant/30 rounded-2xl border border-primary/20 space-y-4 animate-in slide-in-from-top-4">
                           <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-1">
-                              <label className="text-[10px] font-bold uppercase text-outline">名称</label>
+                              <label className="text-xs font-bold uppercase text-outline">名称</label>
                               <input 
                                 value={protocolLabel}
                                 onChange={e => setProtocolLabel(e.target.value)}
@@ -495,14 +495,14 @@ export const Settings: React.FC = () => {
                               />
                             </div>
                             <div className="space-y-1 col-span-2">
-                              <label className="text-[10px] font-bold uppercase text-outline">类别</label>
+                              <label className="text-xs font-bold uppercase text-outline">类别</label>
                               <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
                                 {state.categories.map(c => (
                                   <button
                                     key={c}
                                     type="button"
                                     onClick={() => setProtocolCategory(c)}
-                                    className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all ${
+                                    className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                                       protocolCategory === c 
                                         ? 'bg-primary text-on-primary shadow-sm ring-2 ring-primary/20' 
                                         : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright border border-outline-variant/5'
@@ -516,7 +516,7 @@ export const Settings: React.FC = () => {
                           </div>
                           <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-1">
-                              <label className="text-[10px] font-bold uppercase text-outline">积分</label>
+                              <label className="text-xs font-bold uppercase text-outline">积分</label>
                               <input 
                                 type="number"
                                 value={protocolPoints}
@@ -525,7 +525,7 @@ export const Settings: React.FC = () => {
                               />
                             </div>
                             <div className="space-y-1">
-                              <label className="text-[10px] font-bold uppercase text-outline">图标</label>
+                              <label className="text-xs font-bold uppercase text-outline">图标</label>
                               <div className="flex items-center gap-2">
                                 <div className="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-primary shrink-0">
                                   <MaterialIcon name={protocolIcon} className="text-xl" />
@@ -556,7 +556,7 @@ export const Settings: React.FC = () => {
                           <button
                             key={cat}
                             onClick={() => setProtocolFilter(cat)}
-                            className={`flex-shrink-0 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider transition-all ${protocolFilter === cat ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
+                            className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${protocolFilter === cat ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
                           >
                             {cat}
                           </button>
@@ -570,7 +570,7 @@ export const Settings: React.FC = () => {
                               <MaterialIcon name={tile.icon} className="text-primary" />
                               <div>
                                 <p className="text-sm font-bold">{tile.label}</p>
-                                <p className="text-[10px] text-on-surface-variant uppercase">{tile.category} • {tile.value} 分</p>
+                                <p className="text-xs text-on-surface-variant uppercase">{tile.category} • {tile.value} 分</p>
                               </div>
                             </div>
                             <button 
@@ -607,7 +607,7 @@ export const Settings: React.FC = () => {
                   <MaterialIcon name="military_tech" className="text-primary text-2xl" />
                   <h3 className="font-headline text-2xl font-bold text-on-surface">等级系统配置</h3>
                 </div>
-                <p className="text-[10px] text-outline font-bold uppercase tracking-widest ml-9">
+                <p className="text-xs text-outline font-bold uppercase tracking-widest ml-9">
                   基于累积积分 (包含惩罚扣分，不含兑换消耗)
                 </p>
               </div>
@@ -628,14 +628,14 @@ export const Settings: React.FC = () => {
                       {target.level}
                     </div>
                     <div className="sm:hidden">
-                      <p className="text-[9px] font-black text-outline uppercase tracking-tighter">等级序列</p>
+                      <p className="text-xs font-black text-outline uppercase tracking-tighter">等级序列</p>
                       <p className="text-xs font-bold text-on-surface-variant">LEVEL {target.level}</p>
                     </div>
                   </div>
                   
                   <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                     <div className="space-y-1.5">
-                      <label className="text-[9px] font-black uppercase text-outline ml-1 tracking-widest">称号 / 荣誉头衔</label>
+                      <label className="text-xs font-black uppercase text-outline ml-1 tracking-widest">称号 / 荣誉头衔</label>
                       <input 
                         value={target.title}
                         onChange={(e) => updateLevelTarget(target.level, 'title', e.target.value)}
@@ -644,7 +644,7 @@ export const Settings: React.FC = () => {
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[9px] font-black uppercase text-outline ml-1 tracking-widest">所需累积积分</label>
+                      <label className="text-xs font-black uppercase text-outline ml-1 tracking-widest">所需累积积分</label>
                       <div className="relative">
                         <input 
                           type="number"
@@ -652,7 +652,7 @@ export const Settings: React.FC = () => {
                           onChange={(e) => updateLevelTarget(target.level, 'minPoints', Number(e.target.value))}
                           className="w-full bg-surface-variant/40 border-none rounded-xl px-4 py-3 text-sm font-mono font-bold focus:ring-2 focus:ring-primary/20 text-on-surface transition-all"
                         />
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-bold text-outline">PTS</span>
+                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-outline">PTS</span>
                       </div>
                     </div>
                   </div>
@@ -679,7 +679,7 @@ export const Settings: React.FC = () => {
               <MaterialIcon name="info" className="text-primary text-lg shrink-0 mt-0.5" />
               <div className="space-y-1">
                 <p className="text-xs font-bold text-on-surface">关于累积积分逻辑</p>
-                <p className="text-[10px] text-on-surface-variant leading-relaxed opacity-80">
+                <p className="text-xs text-on-surface-variant leading-relaxed opacity-80">
                   等级进度仅取决于您在系统中获得的<strong>总积分净值</strong>。这意味着即使您在商店兑换了奖励，您的等级和称号也不会下降。只有负面行为导致的扣分会影响累积进度。
                 </p>
               </div>
@@ -705,7 +705,7 @@ export const Settings: React.FC = () => {
         <div className="p-8 bg-error-dim/5 rounded-[2rem] border border-error-dim/10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
             <h4 className="font-headline text-lg font-bold text-error-dim">危险区域</h4>
-            <p className="text-[10px] text-on-surface-variant font-medium opacity-70">
+            <p className="text-xs text-on-surface-variant font-medium opacity-70">
               可选择性清空日志记录或核心数据（积分、行为、兑换记录）。此操作不可撤销。
             </p>
           </div>
@@ -750,7 +750,7 @@ export const Settings: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm font-bold">清空日志记录</p>
-                    <p className="text-[10px] opacity-70">删除所有日记、随笔和草稿</p>
+                    <p className="text-xs opacity-70">删除所有日记、随笔和草稿</p>
                   </div>
                   <MaterialIcon name="book" className="text-xl" />
                 </button>
@@ -764,7 +764,7 @@ export const Settings: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm font-bold">清空核心数据</p>
-                    <p className="text-[10px] opacity-70">删除积分、行为记录及兑换历史</p>
+                    <p className="text-xs opacity-70">删除积分、行为记录及兑换历史</p>
                   </div>
                   <MaterialIcon name="analytics" className="text-xl" />
                 </button>

@@ -59,7 +59,7 @@ export interface LevelTarget {
 }
 
 export interface AppearanceSettings {
-  theme: 'bright' | 'dark';
+  theme: 'bright' | 'dark' | 'moss' | 'nebula';
   fontFamily: 'sans' | 'serif' | 'mono' | 'display';
   fontSize: 'small' | 'medium' | 'large';
 }

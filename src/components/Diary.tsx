@@ -151,13 +151,13 @@ export function Diary() {
           <div className="flex p-1 bg-surface-variant/30 rounded-xl w-fit border border-outline-variant/5">
             <button
               onClick={() => setShowDrafts(false)}
-              className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${!showDrafts ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant'}`}
+              className={`px-4 py-1.5 rounded-lg text-sm font-bold transition-all ${!showDrafts ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant'}`}
             >
               已发布
             </button>
             <button
               onClick={() => setShowDrafts(true)}
-              className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${showDrafts ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant'}`}
+              className={`px-4 py-1.5 rounded-lg text-sm font-bold transition-all ${showDrafts ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant'}`}
             >
               草稿箱
             </button>
@@ -165,7 +165,7 @@ export function Diary() {
           
           <button 
             onClick={() => setIsFiltersExpanded(!isFiltersExpanded)}
-            className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${isFiltersExpanded ? 'bg-primary/10 text-primary' : 'bg-surface-variant/30 text-on-surface-variant hover:bg-surface-variant/50'}`}
+            className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-sm font-bold transition-all ${isFiltersExpanded ? 'bg-primary/10 text-primary' : 'bg-surface-variant/30 text-on-surface-variant hover:bg-surface-variant/50'}`}
           >
             <MaterialIcon name="filter_list" className="text-sm" />
             筛选
@@ -188,7 +188,7 @@ export function Diary() {
                     <button
                       key={cat}
                       onClick={() => setFilterCategory(cat)}
-                      className={`flex-shrink-0 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
+                      className={`flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
                         filterCategory === cat 
                           ? (isNegative ? 'bg-error text-on-error' : 'bg-primary text-on-primary') 
                           : (isNegative ? 'bg-error/10 text-error hover:bg-error/20' : 'bg-surface-variant/50 text-on-surface-variant hover:bg-surface-bright')
@@ -208,7 +208,7 @@ export function Diary() {
 
               <div className="flex flex-wrap items-center gap-3 p-4 bg-surface-variant/20 rounded-2xl border border-outline-variant/10">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold text-outline uppercase tracking-widest">期间:</span>
+                  <span className="text-xs font-bold text-outline uppercase tracking-widest">期间:</span>
                   <input 
                     type="date"
                     value={startDate}
@@ -226,7 +226,7 @@ export function Diary() {
                 {(startDate || endDate) && (
                   <button 
                     onClick={() => { setStartDate(''); setEndDate(''); }}
-                    className="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline"
+                    className="text-xs font-bold text-primary uppercase tracking-widest hover:underline"
                   >
                     重置日期
                   </button>
@@ -248,7 +248,7 @@ export function Diary() {
           >
             <div className="nordic-card p-4 space-y-4 bg-surface-variant/10 border-primary/10">
               <div className="flex items-center justify-between">
-                <h4 className="text-[10px] font-black uppercase tracking-widest text-primary">管理日志类别</h4>
+                <h4 className="text-xs font-black uppercase tracking-widest text-primary">管理日志类别</h4>
                 <button onClick={() => setIsManagingCategories(false)} className="text-on-surface-variant">
                   <MaterialIcon name="close" className="text-sm" />
                 </button>
@@ -265,7 +265,7 @@ export function Diary() {
                 />
                 <button 
                   onClick={handleAddCategory}
-                  className="px-4 py-2 bg-primary text-on-primary text-[10px] font-bold rounded-lg uppercase"
+                  className="px-4 py-2 bg-primary text-on-primary text-xs font-bold rounded-lg uppercase"
                 >
                   添加
                 </button>
@@ -274,7 +274,7 @@ export function Diary() {
               <div className="flex flex-wrap gap-2">
                 {state.diaryCategories.map(cat => (
                   <div key={cat} className="flex items-center gap-2 bg-surface-variant/50 px-3 py-1.5 rounded-lg border border-outline-variant/5">
-                    <span className="text-[10px] font-bold">{cat}</span>
+                    <span className="text-xs font-bold">{cat}</span>
                     <button 
                       onClick={() => handleRemoveCategory(cat)}
                       className="text-on-surface-variant hover:text-error transition-colors"
@@ -306,10 +306,10 @@ export function Diary() {
               <div className="flex justify-between items-start mb-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 bg-primary/10 text-primary text-[8px] font-black uppercase tracking-widest rounded">
+                    <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs font-black uppercase tracking-widest rounded">
                       {entry.category}
                     </span>
-                    <span className="text-[9px] text-on-surface-variant font-medium">
+                    <span className="text-xs text-on-surface-variant font-medium">
                       {new Date(entry.timestamp).toLocaleString('zh-CN', { 
                         month: 'short', 
                         day: 'numeric', 
@@ -339,7 +339,7 @@ export function Diary() {
                 {entry.content}
               </p>
               {entry.updatedAt && (
-                <p className="mt-4 text-[9px] text-on-surface-variant/40 italic">
+                <p className="mt-4 text-xs text-on-surface-variant/40 italic">
                   最后修改于: {new Date(entry.updatedAt).toLocaleString()}
                 </p>
               )}
@@ -394,7 +394,7 @@ export function Diary() {
                     <button
                       key={cat}
                       onClick={() => setEditCategory(cat)}
-                      className={`flex-shrink-0 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${editCategory === cat ? 'bg-primary text-on-primary' : 'bg-surface-variant/50 text-on-surface-variant hover:bg-surface-bright'}`}
+                      className={`flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${editCategory === cat ? 'bg-primary text-on-primary' : 'bg-surface-variant/50 text-on-surface-variant hover:bg-surface-bright'}`}
                     >
                       {cat}
                     </button>
@@ -484,7 +484,7 @@ export function Diary() {
               <div className="flex justify-between items-start">
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full">
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-black uppercase tracking-widest rounded-full">
                       {viewingEntry.category}
                     </span>
                     <span className="text-xs text-on-surface-variant font-medium">
@@ -504,9 +504,9 @@ export function Diary() {
 
               <div className="pt-8 border-t border-outline-variant/10 flex items-center justify-between">
                 <div className="space-y-1">
-                  <p className="text-[10px] text-on-surface-variant/40 uppercase font-bold">最初发布于: {new Date(viewingEntry.timestamp).toLocaleString()}</p>
+                  <p className="text-xs text-on-surface-variant/40 uppercase font-bold">最初发布于: {new Date(viewingEntry.timestamp).toLocaleString()}</p>
                   {viewingEntry.updatedAt && (
-                    <p className="text-[10px] text-primary/60 uppercase font-bold">最后修改于: {new Date(viewingEntry.updatedAt).toLocaleString()}</p>
+                    <p className="text-xs text-primary/60 uppercase font-bold">最后修改于: {new Date(viewingEntry.updatedAt).toLocaleString()}</p>
                   )}
                 </div>
                 <div className="flex items-center gap-2">

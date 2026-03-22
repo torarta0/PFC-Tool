@@ -99,13 +99,8 @@ export default function App() {
       {/* TopAppBar */}
       <header className="fixed top-0 left-0 w-full z-50 bg-background/70 backdrop-blur-xl flex justify-between items-center px-6 py-4 border-b border-outline-variant/5">
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-outline-variant/15">
-            <img 
-              src="https://picsum.photos/seed/commander/200" 
-              alt="指挥官头像" 
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 text-primary shadow-inner">
+            <MaterialIcon name="military_tech" className="text-2xl fill-1" />
           </div>
           <h1 className="font-headline font-bold tracking-tight text-on-surface text-xl">PFC 指挥官</h1>
         </div>
@@ -127,20 +122,20 @@ export default function App() {
           </div>
         </div>
 
-        <div className="md:hidden text-primary text-xs font-headline font-bold tracking-tighter">
+        <div className="md:hidden text-primary text-sm font-headline font-bold tracking-tighter">
           等级 {userLevel} • {state.totalPoints.toLocaleString()} 累积积分
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-4 md:py-8 space-y-6">
         {/* Cognitive Status Hero - Compressed */}
-        {activeTab !== 'Diary' && (
+        {(activeTab === 'Command' || activeTab === 'Settings') && (
           <section className="bg-surface-low/40 p-5 rounded-2xl border border-outline-variant/5">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="space-y-1 flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <p className="text-secondary font-label tracking-[0.2em] uppercase text-[10px] font-bold">当前等级状态</p>
-                  <span className="text-[10px] font-headline font-bold text-primary">LV.{userLevel} {levelTitle}</span>
+                  <p className="text-secondary font-label tracking-[0.2em] uppercase text-xs font-bold">当前等级状态</p>
+                  <span className="text-xs font-headline font-bold text-primary">LV.{userLevel} {levelTitle}</span>
                 </div>
                 <div className="flex items-baseline gap-2">
                   <h2 className="font-headline text-3xl font-extrabold text-on-background tracking-tighter">
@@ -151,7 +146,7 @@ export default function App() {
               </div>
               
               <div className="flex-1 max-w-xs space-y-1.5">
-                <div className="flex items-center justify-between text-[9px] font-bold uppercase tracking-wider text-on-surface-variant">
+                <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-on-surface-variant">
                   <span>升级进度</span>
                   <span>{Math.round(progress)}%</span>
                 </div>
@@ -184,7 +179,7 @@ export default function App() {
             className={`flex flex-col items-center justify-center px-4 py-2 transition-all ${activeTab === tab.id ? 'bg-surface-variant text-primary rounded-xl scale-95' : 'text-on-surface-variant'}`}
           >
             <MaterialIcon name={tab.icon} className={activeTab === tab.id ? 'fill-1' : ''} />
-            <span className="font-label text-[10px] font-medium tracking-wide uppercase mt-1">{tab.label}</span>
+            <span className="font-label text-xs font-medium tracking-wide uppercase mt-1">{tab.label}</span>
           </button>
         ))}
       </nav>
@@ -221,7 +216,7 @@ export default function App() {
               </div>
 
               <div className="py-8 border-y border-outline-variant/10 space-y-2">
-                <p className="text-outline text-[10px] font-black uppercase tracking-widest">获得新军衔</p>
+                <p className="text-outline text-xs font-black uppercase tracking-widest">获得新军衔</p>
                 <h3 className="font-headline text-3xl font-bold text-on-surface">
                   LV.{userLevel} <span className="text-primary">{levelTitle}</span>
                 </h3>

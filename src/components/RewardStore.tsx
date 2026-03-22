@@ -254,7 +254,7 @@ export const RewardStore: React.FC = () => {
                 <button
                   key={cat}
                   onClick={() => setActiveTab(cat)}
-                  className={`flex-shrink-0 px-4 py-1.5 rounded-full font-label text-[10px] font-bold uppercase tracking-wider transition-all ${activeTab === cat ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
+                  className={`flex-shrink-0 px-4 py-1.5 rounded-full font-label text-xs font-bold uppercase tracking-wider transition-all ${activeTab === cat ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
                 >
                   {cat}
                 </button>
@@ -287,7 +287,7 @@ export const RewardStore: React.FC = () => {
               >
                 <div className="nordic-card p-4 space-y-4 bg-surface-variant/10 border-primary/10">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-[10px] font-black uppercase tracking-widest text-primary">管理奖励类别</h4>
+                    <h4 className="text-xs font-black uppercase tracking-widest text-primary">管理奖励类别</h4>
                     <button onClick={() => setIsManagingCategories(false)} className="text-on-surface-variant">
                       <MaterialIcon name="close" className="text-sm" />
                     </button>
@@ -304,7 +304,7 @@ export const RewardStore: React.FC = () => {
                     />
                     <button 
                       onClick={handleAddCategory}
-                      className="px-4 py-2 bg-primary text-on-primary text-[10px] font-bold rounded-lg uppercase"
+                      className="px-4 py-2 bg-primary text-on-primary text-xs font-bold rounded-lg uppercase"
                     >
                       添加
                     </button>
@@ -313,7 +313,7 @@ export const RewardStore: React.FC = () => {
                   <div className="flex flex-wrap gap-2">
                     {state.rewardCategories.map(cat => (
                       <div key={cat} className="flex items-center gap-2 bg-surface-variant/50 px-3 py-1.5 rounded-lg border border-outline-variant/5">
-                        <span className="text-[10px] font-bold">{cat}</span>
+                        <span className="text-xs font-bold">{cat}</span>
                         <button 
                           onClick={() => handleRemoveCategory(cat)}
                           className="text-on-surface-variant hover:text-error transition-colors"
@@ -346,14 +346,14 @@ export const RewardStore: React.FC = () => {
                     {isLevelLocked && (
                       <div className="absolute inset-0 bg-background/40 backdrop-blur-[1px] z-10 flex flex-col items-center justify-center gap-1">
                         <MaterialIcon name="lock" className="text-xl text-outline" />
-                        <span className="font-headline font-bold text-[8px] tracking-widest uppercase text-outline">LV.{reward.minLevel}</span>
+                        <span className="font-headline font-bold text-[10px] tracking-widest uppercase text-outline">LV.{reward.minLevel}</span>
                       </div>
                     )}
 
                     {isOneTimeAndPurchased && (
                       <div className="absolute inset-0 bg-background/40 backdrop-blur-[1px] z-10 flex flex-col items-center justify-center gap-1">
                         <MaterialIcon name="check_circle" className="text-xl text-primary" />
-                        <span className="font-headline font-bold text-[8px] tracking-widest uppercase text-primary">已兑换</span>
+                        <span className="font-headline font-bold text-[10px] tracking-widest uppercase text-primary">已兑换</span>
                       </div>
                     )}
                     
@@ -364,7 +364,7 @@ export const RewardStore: React.FC = () => {
                         <MaterialIcon name={reward.icon} className="text-3xl" />
                       )}
                       {reward.isRepeatable && purchaseCount > 0 && (
-                        <div className="absolute bottom-1 right-1 bg-primary text-on-primary text-[8px] font-bold px-1.5 py-0.5 rounded-full shadow-lg">
+                        <div className="absolute bottom-1 right-1 bg-primary text-on-primary text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-lg">
                           x{purchaseCount}
                         </div>
                       )}
@@ -385,11 +385,11 @@ export const RewardStore: React.FC = () => {
                     <div className="space-y-0.5">
                       <h3 className="font-headline text-xs font-bold text-on-surface truncate">{reward.label}</h3>
                       <div className="flex items-center justify-between">
-                        <p className={`text-[10px] font-bold ${canAfford ? 'text-primary' : 'text-error'}`}>
-                          {reward.points.toLocaleString()} <span className="text-[8px] opacity-60">分</span>
+                        <p className={`text-xs font-bold ${canAfford ? 'text-primary' : 'text-error'}`}>
+                          {reward.points.toLocaleString()} <span className="text-[10px] opacity-60">分</span>
                         </p>
                         {!reward.isRepeatable && (
-                          <span className="text-[8px] text-on-surface-variant font-bold uppercase tracking-tighter opacity-40">一次性</span>
+                          <span className="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter opacity-40">一次性</span>
                         )}
                       </div>
                     </div>
@@ -397,7 +397,7 @@ export const RewardStore: React.FC = () => {
                     <button
                       disabled={isLocked || !canAfford}
                       onClick={() => handleRedeem(reward)}
-                      className={`w-full py-2 rounded-lg font-bold text-[10px] transition-all ${isLocked || !canAfford ? 'bg-surface-variant text-on-surface-variant/50 cursor-not-allowed' : 'bg-primary text-on-primary hover:brightness-110 active:scale-95'}`}
+                      className={`w-full py-2 rounded-lg font-bold text-xs transition-all ${isLocked || !canAfford ? 'bg-surface-variant text-on-surface-variant/50 cursor-not-allowed' : 'bg-primary text-on-primary hover:brightness-110 active:scale-95'}`}
                     >
                       {isLevelLocked ? '已锁定' : isOneTimeAndPurchased ? '已兑换' : !canAfford ? '积分不足' : '兑换'}
                     </button>
@@ -455,14 +455,14 @@ export const RewardStore: React.FC = () => {
                         )}
                       </div>
                       <div className="space-y-1">
-                        <h3 className="text-[11px] font-bold text-on-surface truncate">{item.rewardName}</h3>
-                        <p className="text-[8px] text-on-surface-variant font-bold uppercase tracking-tighter opacity-60">
+                        <h3 className="text-xs font-bold text-on-surface truncate">{item.rewardName}</h3>
+                        <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter opacity-60">
                           {new Date(item.timestamp).toLocaleDateString()}
                         </p>
                       </div>
                       <button 
                         onClick={() => handleUse(item.id, item.rewardName)}
-                        className="w-full py-2 bg-primary text-on-primary text-[10px] font-bold rounded-lg hover:brightness-110 active:scale-95 transition-all"
+                        className="w-full py-2 bg-primary text-on-primary text-xs font-bold rounded-lg hover:brightness-110 active:scale-95 transition-all"
                       >
                         立即使用
                       </button>
@@ -491,14 +491,14 @@ export const RewardStore: React.FC = () => {
                         )}
                       </div>
                       <div className="space-y-1">
-                        <h3 className="text-[11px] font-bold text-on-surface truncate">{item.rewardName}</h3>
-                        <p className="text-[8px] text-on-surface-variant font-bold uppercase tracking-tighter">
+                        <h3 className="text-xs font-bold text-on-surface truncate">{item.rewardName}</h3>
+                        <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">
                           使用于 {new Date(item.timestamp).toLocaleDateString()}
                         </p>
                       </div>
                       <button 
                         onClick={() => handleDeleteRedemption(item.id)}
-                        className="w-full py-2 bg-surface-variant text-on-surface-variant text-[10px] font-bold rounded-lg hover:bg-error hover:text-on-error transition-all flex items-center justify-center gap-1"
+                        className="w-full py-2 bg-surface-variant text-on-surface-variant text-xs font-bold rounded-lg hover:bg-error hover:text-on-error transition-all flex items-center justify-center gap-1"
                       >
                         <MaterialIcon name={confirmDeleteRedemptionId === item.id ? 'done' : 'delete'} className="text-xs" />
                         {confirmDeleteRedemptionId === item.id ? '确认' : '删除'}
@@ -539,7 +539,7 @@ export const RewardStore: React.FC = () => {
             <div className="flex-1 overflow-y-auto p-6 md:p-12 max-w-2xl mx-auto w-full space-y-8">
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-primary">奖励名称</label>
+                  <label className="text-xs font-black uppercase tracking-widest text-primary">奖励名称</label>
                   <input 
                     type="text"
                     placeholder="例如：看场电影..."
@@ -550,13 +550,13 @@ export const RewardStore: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-primary">奖励类别</label>
+                  <label className="text-xs font-black uppercase tracking-widest text-primary">奖励类别</label>
                   <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                     {state.rewardCategories.map(cat => (
                       <button
                         key={cat}
                         onClick={() => setEditCategory(cat)}
-                        className={`flex-shrink-0 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${editCategory === cat ? 'bg-primary text-on-primary' : 'bg-surface-variant/50 text-on-surface-variant hover:bg-surface-bright'}`}
+                        className={`flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${editCategory === cat ? 'bg-primary text-on-primary' : 'bg-surface-variant/50 text-on-surface-variant hover:bg-surface-bright'}`}
                       >
                         {cat}
                       </button>
@@ -566,7 +566,7 @@ export const RewardStore: React.FC = () => {
 
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-primary">所需积分</label>
+                    <label className="text-xs font-black uppercase tracking-widest text-primary">所需积分</label>
                     <input 
                       type="number"
                       value={editPoints}
@@ -575,7 +575,7 @@ export const RewardStore: React.FC = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-primary">最低等级限制</label>
+                    <label className="text-xs font-black uppercase tracking-widest text-primary">最低等级限制</label>
                     <input 
                       type="number"
                       value={editMinLevel}
@@ -586,17 +586,17 @@ export const RewardStore: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-primary">封面展示</label>
+                  <label className="text-xs font-black uppercase tracking-widest text-primary">封面展示</label>
                   <div className="flex gap-2 p-1 bg-surface-variant/30 rounded-xl w-fit">
                     <button 
                       onClick={() => setEditDisplayMode('icon')}
-                      className={`px-4 py-1.5 rounded-lg text-[10px] font-bold transition-all ${editDisplayMode === 'icon' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant'}`}
+                      className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${editDisplayMode === 'icon' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant'}`}
                     >
                       图标
                     </button>
                     <button 
                       onClick={() => setEditDisplayMode('image')}
-                      className={`px-4 py-1.5 rounded-lg text-[10px] font-bold transition-all ${editDisplayMode === 'image' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant'}`}
+                      className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${editDisplayMode === 'image' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant'}`}
                     >
                       图片
                     </button>
@@ -649,7 +649,7 @@ export const RewardStore: React.FC = () => {
                 <div className="flex items-center justify-between p-4 bg-surface-variant/10 rounded-2xl border border-outline-variant/5">
                   <div className="space-y-0.5">
                     <p className="text-sm font-bold">可重复购买</p>
-                    <p className="text-[10px] text-on-surface-variant">关闭则为一次性奖励，兑换后将从商店下架</p>
+                    <p className="text-xs text-on-surface-variant">关闭则为一次性奖励，兑换后将从商店下架</p>
                   </div>
                   <button 
                     onClick={() => setEditIsRepeatable(!editIsRepeatable)}
@@ -677,16 +677,16 @@ export const RewardStore: React.FC = () => {
                 <MaterialIcon name={successData.type === 'redeem' ? 'celebration' : 'check_circle'} />
               </div>
               <div className="flex-1">
-                <p className="text-xs font-bold text-on-surface">
+                <p className="text-sm font-bold text-on-surface">
                   {successData.type === 'redeem' ? '兑换成功！' : '已成功使用！'}
                 </p>
-                <p className="text-[10px] text-on-surface-variant">
+                <p className="text-xs text-on-surface-variant">
                   {successData.name} {successData.points ? `(-${successData.points} 分)` : ''}
                 </p>
               </div>
               <button 
                 onClick={handleUndo}
-                className="px-3 py-1.5 bg-surface-variant text-on-surface-variant text-[10px] font-bold rounded-lg hover:bg-error hover:text-on-error transition-all"
+                className="px-3 py-1.5 bg-surface-variant text-on-surface-variant text-xs font-bold rounded-lg hover:bg-error hover:text-on-error transition-all"
               >
                 撤回
               </button>

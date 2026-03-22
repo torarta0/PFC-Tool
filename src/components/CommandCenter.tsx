@@ -323,10 +323,10 @@ export const CommandCenter: React.FC = () => {
                     <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center mb-3 group-hover:bg-primary/10 transition-colors">
                       <MaterialIcon name={tile.icon} className="text-primary text-2xl opacity-70 group-hover:opacity-100 transition-opacity" />
                     </div>
-                    <span className="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-primary transition-colors text-center leading-tight line-clamp-2">
+                    <span className="text-xs font-label font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-primary transition-colors text-center leading-tight line-clamp-2">
                       {tile.label}
                     </span>
-                    <span className="text-[8px] text-outline mt-1">{tile.value} 分</span>
+                    <span className="text-[10px] text-outline mt-1">{tile.value} 分</span>
                   </button>
                 ))}
                 {state.quickTiles.length === 0 && (
@@ -354,7 +354,7 @@ export const CommandCenter: React.FC = () => {
                 </div>
                 <form onSubmit={handleManualSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-outline ml-1">你达成了什么？</label>
+                    <label className="text-xs font-bold uppercase tracking-widest text-outline ml-1">你达成了什么？</label>
                     <input
                       value={manualLabel}
                       onChange={(e) => setManualLabel(e.target.value)}
@@ -364,7 +364,7 @@ export const CommandCenter: React.FC = () => {
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-outline ml-1">类别</label>
+                      <label className="text-xs font-bold uppercase tracking-widest text-outline ml-1">类别</label>
                       <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
                     {state.categories.map(cat => {
                       const isNegative = cat === 'Negative' || cat === '负面';
@@ -386,14 +386,14 @@ export const CommandCenter: React.FC = () => {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-outline ml-1">积分</label>
+                      <label className="text-xs font-bold uppercase tracking-widest text-outline ml-1">积分</label>
                       <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
                         {[1, 2, 5, 10, 15, 20].map(p => (
                           <button
                             key={p}
                             type="button"
                             onClick={() => setManualPoints(p)}
-                            className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${manualPoints === p ? 'bg-primary text-on-primary scale-110 shadow-lg' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
+                            className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all ${manualPoints === p ? 'bg-primary text-on-primary scale-110 shadow-lg' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
                           >
                             {p}
                           </button>
@@ -403,7 +403,7 @@ export const CommandCenter: React.FC = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-outline ml-1">备注 (选填)</label>
+                    <label className="text-xs font-bold uppercase tracking-widest text-outline ml-1">备注 (选填)</label>
                     <textarea
                       value={manualNote}
                       onChange={(e) => setManualNote(e.target.value)}
@@ -413,7 +413,7 @@ export const CommandCenter: React.FC = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-outline ml-1">上传图片 (选填)</label>
+                    <label className="text-xs font-bold uppercase tracking-widest text-outline ml-1">上传图片 (选填)</label>
                     <div className="flex items-center gap-4">
                       <div className="relative w-20 h-20 rounded-2xl bg-surface-variant flex items-center justify-center overflow-hidden border border-dashed border-outline-variant/30 group">
                         {manualImage ? (
@@ -432,7 +432,7 @@ export const CommandCenter: React.FC = () => {
                         <button 
                           type="button"
                           onClick={() => setManualImage(undefined)}
-                          className="text-[10px] font-bold text-error uppercase tracking-widest hover:underline"
+                          className="text-xs font-bold text-error uppercase tracking-widest hover:underline"
                         >
                           移除图片
                         </button>
@@ -463,7 +463,7 @@ export const CommandCenter: React.FC = () => {
                 </div>
                 <button 
                   onClick={() => setShowAllLogs(true)}
-                  className="px-4 py-2 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-primary/20 transition-all self-start sm:self-auto"
+                  className="px-4 py-2 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest rounded-full hover:bg-primary/20 transition-all self-start sm:self-auto"
                 >
                   查看全部
                 </button>
@@ -472,7 +472,7 @@ export const CommandCenter: React.FC = () => {
               {/* Filters */}
               <div className="flex flex-col gap-4 bg-surface-low p-4 rounded-2xl border border-outline-variant/10 shadow-sm">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[10px] font-bold text-outline uppercase tracking-widest mr-2">类型:</span>
+                  <span className="text-xs font-bold text-outline uppercase tracking-widest mr-2">类型:</span>
                   {[
                     { id: 'all', label: '全部' },
                     { id: 'behavior', label: '行为记录' },
@@ -481,7 +481,7 @@ export const CommandCenter: React.FC = () => {
                     <button
                       key={type.id}
                       onClick={() => setFilterType(type.id as any)}
-                      className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-all ${filterType === type.id ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
+                      className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${filterType === type.id ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
                     >
                       {type.label}
                     </button>
@@ -489,10 +489,10 @@ export const CommandCenter: React.FC = () => {
                 </div>
                 {filterType !== 'reward' && (
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-[10px] font-bold text-outline uppercase tracking-widest mr-2">类别:</span>
+                    <span className="text-xs font-bold text-outline uppercase tracking-widest mr-2">类别:</span>
                     <button
                       onClick={() => setFilterCategory('all')}
-                      className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-all ${filterCategory === 'all' ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
+                      className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${filterCategory === 'all' ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
                     >
                       全部
                     </button>
@@ -502,7 +502,7 @@ export const CommandCenter: React.FC = () => {
                         <button
                           key={cat}
                           onClick={() => setFilterCategory(cat)}
-                          className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-all ${
+                          className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
                             filterCategory === cat 
                               ? (isNegative ? 'bg-error text-on-error' : 'bg-primary text-on-primary') 
                               : (isNegative ? 'bg-error/10 text-error hover:bg-error/20' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright')
@@ -515,7 +515,7 @@ export const CommandCenter: React.FC = () => {
                   </div>
                 )}
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[10px] font-bold text-outline uppercase tracking-widest mr-2">时间:</span>
+                  <span className="text-xs font-bold text-outline uppercase tracking-widest mr-2">时间:</span>
                   {[
                     { id: 'all', label: '全部时间' },
                     { id: 'today', label: '今天' },
@@ -525,7 +525,7 @@ export const CommandCenter: React.FC = () => {
                     <button
                       key={time.id}
                       onClick={() => setFilterTime(time.id as any)}
-                      className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-all ${filterTime === time.id ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
+                      className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${filterTime === time.id ? 'bg-primary text-on-primary' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-bright'}`}
                     >
                       {time.label}
                     </button>
@@ -546,7 +546,7 @@ export const CommandCenter: React.FC = () => {
                       </div>
                       <div>
                         <h4 className="text-sm font-bold text-on-surface line-clamp-1">{log.displayLabel}</h4>
-                        <p className="text-[10px] font-bold text-outline uppercase tracking-widest">
+                        <p className="text-xs font-bold text-outline uppercase tracking-widest">
                           {log.displayCategory} • {formatDistanceToNow(log.timestamp, { addSuffix: true, locale: zhCN })}
                         </p>
                       </div>
@@ -628,7 +628,7 @@ export const CommandCenter: React.FC = () => {
                         </div>
                         <div>
                           <h4 className="text-sm font-bold text-on-surface">{log.displayLabel}</h4>
-                          <p className="text-[10px] font-bold text-outline uppercase tracking-widest">
+                          <p className="text-xs font-bold text-outline uppercase tracking-widest">
                             {log.displayCategory} • {new Date(log.timestamp).toLocaleString()}
                           </p>
                         </div>
@@ -692,10 +692,10 @@ export const CommandCenter: React.FC = () => {
                     <div className="flex items-start justify-between">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest rounded-md ${log.type === 'reward' ? 'bg-reward/10 text-reward' : 'bg-primary/10 text-primary'}`}>
+                          <span className={`px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest rounded-md ${log.type === 'reward' ? 'bg-reward/10 text-reward' : 'bg-primary/10 text-primary'}`}>
                             {log.displayCategory}
                           </span>
-                          <span className="text-[10px] text-outline font-medium">
+                          <span className="text-xs text-outline font-medium">
                             {new Date(log.timestamp).toLocaleString()}
                           </span>
                         </div>
@@ -708,7 +708,7 @@ export const CommandCenter: React.FC = () => {
 
                     {log.note && (
                       <div className="space-y-2">
-                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline">{log.type === 'reward' ? '状态说明' : '备注'}</label>
+                        <label className="text-xs font-bold uppercase tracking-widest text-outline">{log.type === 'reward' ? '状态说明' : '备注'}</label>
                         <p className="text-sm text-on-surface-variant leading-relaxed bg-surface-variant/30 p-4 rounded-2xl italic">
                           "{log.note}"
                         </p>
