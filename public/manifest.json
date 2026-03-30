@@ -1,0 +1,21 @@
+{
+  "name": "PFC Commander Pro",
+  "short_name": "PFC",
+  "description": "Your personal cognitive enhancement tool.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7c3a0c",
+  "icons": [
+    {
+      "src": "https://picsum.photos/seed/pfc192/192/192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://picsum.photos/seed/pfc512/512/512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -31,6 +31,7 @@ export function Diary() {
   
   // Confirmation State
   const [showCloseConfirm, setShowCloseConfirm] = useState(false);
+  const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
 
   const filteredEntries = useMemo(() => {
     return state.diary.filter(entry => {
@@ -115,6 +116,12 @@ export function Diary() {
     if (state.diaryCategories.length <= 1) return;
     updateConfig({ diaryCategories: state.diaryCategories.filter(c => c !== cat) });
     if (filterCategory === cat) setFilterCategory('全部');
+  };
+
+  const handleDeleteEntry = (id: string) => {
+    deleteDiaryEntry(id);
+    setDeleteConfirmId(null);
+    setViewingEntry(null);
   };
 
   return (
@@ -328,7 +335,7 @@ export function Diary() {
                     <MaterialIcon name="edit" className="text-lg" />
                   </button>
                   <button 
-                    onClick={(e) => { e.stopPropagation(); deleteDiaryEntry(entry.id); }}
+                    onClick={(e) => { e.stopPropagation(); setDeleteConfirmId(entry.id); }}
                     className="p-2 text-outline hover:text-error transition-all"
                   >
                     <MaterialIcon name="delete" className="text-lg" />
@@ -518,13 +525,54 @@ export function Diary() {
                     编辑
                   </button>
                   <button 
-                    onClick={() => { deleteDiaryEntry(viewingEntry.id); setViewingEntry(null); }}
+                    onClick={() => setDeleteConfirmId(viewingEntry.id)}
                     className="flex items-center gap-2 px-4 py-2 bg-error/10 text-error text-xs font-bold rounded-xl hover:bg-error/20 transition-all"
                   >
                     <MaterialIcon name="delete" className="text-sm" />
                     删除
                   </button>
                 </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Delete Confirmation Modal */}
+      <AnimatePresence>
+        {deleteConfirmId && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] bg-background/80 backdrop-blur-xl flex items-center justify-center p-6"
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="nordic-card max-w-sm w-full p-8 space-y-6 border-error/20"
+            >
+              <div className="space-y-2 text-center">
+                <div className="w-16 h-16 bg-error/10 text-error rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MaterialIcon name="delete_forever" className="text-3xl" />
+                </div>
+                <h4 className="font-headline text-xl font-bold text-on-surface">确认删除日志？</h4>
+                <p className="text-sm text-on-surface-variant">此操作无法撤销，该日志将被永久移除。</p>
+              </div>
+              <div className="flex flex-col gap-2">
+                <button 
+                  onClick={() => handleDeleteEntry(deleteConfirmId)}
+                  className="w-full py-3 bg-error text-on-error font-bold rounded-xl text-sm shadow-lg shadow-error/20"
+                >
+                  确认删除
+                </button>
+                <button 
+                  onClick={() => setDeleteConfirmId(null)}
+                  className="w-full py-3 bg-surface-variant text-on-surface-variant font-bold rounded-xl text-sm hover:bg-surface-bright transition-all"
+                >
+                  取消
+                </button>
               </div>
             </motion.div>
           </motion.div>

@@ -3,6 +3,7 @@ import { useCommanderStore } from '../store';
 import { MaterialIcon } from './MaterialIcon';
 import { getLevel, Reward } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
+import { ImpulseBuffer } from './ImpulseBuffer';
 import confetti from 'canvas-confetti';
 
 export const RewardStore: React.FC = () => {
@@ -12,6 +13,11 @@ export const RewardStore: React.FC = () => {
   const [activeTab, setActiveTab] = useState('全部');
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const [confirmDeleteRedemptionId, setConfirmDeleteRedemptionId] = useState<string | null>(null);
+  const [activeRewardId, setActiveRewardId] = useState<string | null>(null);
+  
+  // Impulse Buffer State
+  const [pendingReward, setPendingReward] = useState<Reward | null>(null);
+  const [showBuffer, setShowBuffer] = useState(false);
   
   // Management State
   const [isManaging, setIsManaging] = useState(false);
@@ -146,6 +152,18 @@ export const RewardStore: React.FC = () => {
   };
 
   const handleRedeem = (reward: Reward) => {
+    // Impulse Buffer Logic: Trigger for specific categories
+    const impulsiveCategories = ['感官愉悦', '精神放松'];
+    if (impulsiveCategories.includes(reward.category)) {
+      setPendingReward(reward);
+      setShowBuffer(true);
+      return;
+    }
+    
+    executeRedeem(reward);
+  };
+
+  const executeRedeem = (reward: Reward) => {
     const redemption = redeemReward(reward);
     if (redemption) {
       setSuccessData({
@@ -162,6 +180,8 @@ export const RewardStore: React.FC = () => {
         colors: ['#97cfe0', '#79a6a5', '#d2eeb9']
       });
     }
+    setPendingReward(null);
+    setShowBuffer(false);
   };
 
   const handleUse = (id: string, name: string) => {
@@ -357,7 +377,10 @@ export const RewardStore: React.FC = () => {
                       </div>
                     )}
                     
-                    <div className="relative aspect-square bg-surface-variant rounded-xl flex items-center justify-center text-primary group overflow-hidden">
+                    <div 
+                      onClick={() => setActiveRewardId(activeRewardId === reward.id ? null : reward.id)}
+                      className="relative aspect-square bg-surface-variant rounded-xl flex items-center justify-center text-primary group overflow-hidden cursor-pointer"
+                    >
                       {reward.image ? (
                         <img src={reward.image} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       ) : (
@@ -370,13 +393,13 @@ export const RewardStore: React.FC = () => {
                       )}
                       <button 
                         onClick={(e) => { e.stopPropagation(); handleOpenEditor(reward); }}
-                        className="absolute top-1 left-1 p-1.5 rounded-full bg-background/50 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity text-outline hover:text-primary"
+                        className={`absolute top-1 left-1 p-1.5 rounded-full bg-background/50 backdrop-blur-md transition-opacity text-outline hover:text-primary ${activeRewardId === reward.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                       >
                         <MaterialIcon name="edit" className="text-xs" />
                       </button>
                       <button 
-                        onClick={(e) => handleDeleteReward(reward.id, e)}
-                        className="absolute top-1 right-1 p-1.5 rounded-full bg-background/50 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity text-outline hover:text-error"
+                        onClick={(e) => { e.stopPropagation(); handleDeleteReward(reward.id, e); }}
+                        className={`absolute top-1 right-1 p-1.5 rounded-full bg-background/50 backdrop-blur-md transition-opacity text-outline hover:text-error ${activeRewardId === reward.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                       >
                         <MaterialIcon name={confirmDeleteId === reward.id ? 'done' : 'close'} className="text-xs" />
                       </button>
@@ -698,6 +721,19 @@ export const RewardStore: React.FC = () => {
               </button>
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+      {/* Impulse Buffer */}
+      <AnimatePresence>
+        {showBuffer && pendingReward && (
+          <ImpulseBuffer 
+            itemName={pendingReward.label}
+            onComplete={() => executeRedeem(pendingReward)}
+            onCancel={() => {
+              setShowBuffer(false);
+              setPendingReward(null);
+            }}
+          />
         )}
       </AnimatePresence>
     </div>

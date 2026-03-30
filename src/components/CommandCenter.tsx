@@ -321,7 +321,7 @@ export const CommandCenter: React.FC = () => {
                     className="group flex flex-col items-center justify-center p-6 bg-surface-low rounded-2xl hover:bg-surface-variant transition-all duration-300 border border-outline-variant/10 shadow-sm hover:shadow-md min-h-[120px]"
                   >
                     <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center mb-3 group-hover:bg-primary/10 transition-colors">
-                      <MaterialIcon name={tile.icon} className="text-primary text-2xl opacity-70 group-hover:opacity-100 transition-opacity" />
+                      <MaterialIcon name={tile.icon} className="text-primary text-2xl opacity-100 lg:opacity-70 lg:group-hover:opacity-100 transition-opacity" />
                     </div>
                     <span className="text-xs font-label font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-primary transition-colors text-center leading-tight line-clamp-2">
                       {tile.label}
